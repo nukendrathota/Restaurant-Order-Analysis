@@ -11,6 +11,27 @@ The dataset contains two tables: The menu_items table, containing the list of me
 
 Additionally, CSV files generated from SQL queries can be found [here](sql-query-results).
 
+### Table Preview
+Here's a preview of the menu_items and order_details tables limited to their first 5 rows.
+
+#### Menu Items Table
+| menu_item_id | item_name      | category | price |
+|--------------|----------------|----------|-------|
+| 101          | Hamburger      | American | 12.95 |
+| 102          | Cheeseburger   | American | 13.95 |
+| 103          | Hot Dog        | American | 9.00  |
+| 104          | Veggie Burger  | American | 10.50 |
+| 105          | Mac & Cheese   | American | 7.00  |
+
+#### Order Details Table
+| order_details_id | order_id | order_date | order_time | item_id |
+|------------------|----------|------------|------------|---------|
+| 1                | 1        | 2023-01-01 | 11:38:36   | 109     |
+| 2                | 2        | 2023-01-01 | 11:57:40   | 108     |
+| 3                | 2        | 2023-01-01 | 11:57:40   | 124     |
+| 4                | 2        | 2023-01-01 | 11:57:40   | 117     |
+| 5                | 2        | 2023-01-01 | 11:57:40   | 129     |
+
 ### Project Overview
 This project is a simple, basic SQL analysis of two tables on restaurant orders. It aims to uncover insights on the performance of the restaurant, and decide which menu items to include going forward. This project provided me with the opportunity to showcase my SQL skills and also learn MySQL and GitHub.
 
@@ -229,6 +250,7 @@ LIMIT 10
 | 1734     | 13             |
 
 #### 5. Number of orders with more than 12 items.
+To count the number of orders where more than 12 items were ordered, I first grouped the order_details table by order_id and filtered out groups with a count of item_id greater than 12. I then counted the remaining orders.
 ```sql
 SELECT COUNT(order_id) as num_orders
 FROM
@@ -509,7 +531,7 @@ ORDER BY 3 DESC
 
 #### Insights
 1. The restaurant has 32 items in 4 categories, with Italian and Mexican categories having 9 items each, Asian 8 items and American 6 items.
-2. Over a period of 3 months, Jan-Mar 2023, the restaurant had 5370 orders or about 60 orders per day. This is a good number of orders per day.
+2. Over a period of 3 months, Jan-Mar 2023, the restaurant had 5370 orders or about 60 orders per day and earned a revenue of over $150,000.
 3. While the Hamburger is the single most ordered item, it is not the most revenue generating item. That honour goes to the Korean Beef Bowl, which generated over $10000 in revenue.
 4. Although Italian is the most expensive category, with an average dish price of about $16.75, it is still the most ordered category in orders that spent the most money. This indicates that the restaurant is gaining recognition for its Italian dishes in the dine-in segment, while its hamburgers are becoming increasingly popular for takeout orders.
 
