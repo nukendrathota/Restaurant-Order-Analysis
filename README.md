@@ -2,7 +2,7 @@
 ## Introduction
 Welcome to an analysis of a fictional restaurant order data analysis.
 
-Curious about the SQL queries used? Check them here.
+Curious about the SQL queries used? Check them [here](dataset).
 
 ## Background
 ### Dataset
