@@ -198,7 +198,9 @@ FROM
       order_details
 ;
 ```
-
+| COUNT(item_id) |
+|----------------|
+| 12097          |
 #### 4. Orders with the most number of items.
 To identify orders with the most number of items, I grouped the order_details table by the order_id column, counted the number of items in each group, and then ordered the results by the item count in descending order.
 ```sql
@@ -227,7 +229,9 @@ FROM
     )sub
 ;
 ```
-
+| num_orders |
+|------------|
+| 20         |
 #### SQL Queries in Objective 3
 #### 1. Least and most ordered items and their categories.
 To identify the least and most ordered items and their categories, I joined the order_details table with the menu_items table on the item IDs, grouped the results by item name and category, and then ordered the results by the number of orders in descending order.
@@ -244,6 +248,42 @@ GROUP BY 2, 1
 ORDER BY 3 DESC
 ;
 ```
+| category  | item_name             | no_of_orders |
+|-----------|-----------------------|--------------|
+| American  | Hamburger             | 622          |
+| Asian     | Edamame               | 620          |
+| Asian     | Korean Beef Bowl      | 588          |
+| American  | Cheeseburger          | 583          |
+| American  | French Fries          | 571          |
+| Asian     | Tofu Pad Thai         | 562          |
+| Mexican   | Steak Torta           | 489          |
+| Italian   | Spaghetti & Meatballs | 470          |
+| American  | Mac & Cheese          | 463          |
+| Mexican   | Chips & Salsa         | 461          |
+| Asian     | Orange Chicken        | 456          |
+| Mexican   | Chicken Burrito       | 455          |
+| Italian   | Eggplant Parmesan     | 420          |
+| Mexican   | Chicken Torta         | 379          |
+| Italian   | Spaghetti             | 367          |
+| Italian   | Chicken Parmesan      | 364          |
+| Asian     | Pork Ramen            | 360          |
+| Italian   | Mushroom Ravioli      | 359          |
+| Asian     | California Roll       | 355          |
+| Mexican   | Steak Burrito         | 354          |
+| Asian     | Salmon Roll           | 324          |
+| Italian   | Meat Lasagna          | 273          |
+| American  | Hot Dog               | 257          |
+| Italian   | Fettuccine Alfredo    | 249          |
+| Italian   | Shrimp Scampi         | 239          |
+| American  | Veggie Burger         | 238          |
+| Mexican   | Chips & Guacamole     | 237          |
+| Mexican   | Cheese Quesadillas    | 233          |
+| Mexican   | Steak Tacos           | 214          |
+| Italian   | Cheese Lasagna        | 207          |
+| Asian     | Potstickers           | 205          |
+| NULL      | NULL                  | 137          |
+| Mexican   | Chicken Tacos         | 123          |
+
 #### 2. Top 5 orders that spent the most money.
 To find the top 5 orders that spent the most money, I joined the order_details table with the menu_items table on the item IDs, calculated the sum of the prices for each order, grouped the results by order ID, and then ordered the results by the total order amount in descending order, limiting the output to the top 5 orders.
 ```sql
@@ -259,6 +299,13 @@ ORDER BY 2 DESC
 LIMIT 5
 ;
 ```
+| order_id | order_total |
+|----------|-------------|
+| 440      | 192.15      |
+| 2075     | 191.05      |
+| 1957     | 190.10      |
+| 330      | 189.70      |
+| 2675     | 185.10      |
 
 #### 3. Details of the highest spent order and the specific items purchased in that order.
 Using the output of the previous query, we know that order #440 is the highest spent order. The query joins order_details table with the menu_items table on the item IDs, it then counts the numbers of items in the order per each category, and also calculates the amount spent on each category. The results are sorted in descending order of the amount spent per category.
@@ -277,6 +324,22 @@ WHERE
 ORDER BY 4 DESC
 ;
 ```
+| category | item_name             | num_items_per_category | total_spent_per_category |
+|----------|-----------------------|------------------------|--------------------------|
+| Italian  | Spaghetti             | 8                      | 132.25                   |
+| Italian  | Spaghetti & Meatballs | 8                      | 132.25                   |
+| Italian  | Spaghetti & Meatballs | 8                      | 132.25                   |
+| Italian  | Fettuccine Alfredo    | 8                      | 132.25                   |
+| Italian  | Fettuccine Alfredo    | 8                      | 132.25                   |
+| Italian  | Meat Lasagna          | 8                      | 132.25                   |
+| Italian  | Chicken Parmesan      | 8                      | 132.25                   |
+| Italian  | Eggplant Parmesan     | 8                      | 132.25                   |
+| Asian    | Korean Beef Bowl      | 2                      | 22.95                    |
+| Asian    | Edamame               | 2                      | 22.95                    |
+| Mexican  | Steak Tacos           | 2                      | 20.95                    |
+| Mexican  | Chips & Salsa         | 2                      | 20.95                    |
+| American | Hot Dog               | 2                      | 16.00                    |
+| American | French Fries          | 2                      | 16.00                    |
 
 #### 4. Details of the top 5 highest spent orders. 
 We know from the previous query, the order numbers of the top 5 highest spent orders. Filtering for these 5 orders, the query joins order_details table with the menu_items table on the item IDs, it then counts the numbers of items in the order per each category, and also calculates the amount spent on each category. The results are sorted in descending order of the amount spent per category.
@@ -293,6 +356,13 @@ WHERE
 ORDER BY 3 DESC
 ;
 ```
+| category  | num_items_per_category | total_spent_per_category |
+|-----------|------------------------|--------------------------|
+| Italian   | 26                     | 430.65                   |
+| Asian     | 17                     | 228.65                   |
+| Mexican   | 16                     | 189.45                   |
+| American  | 10                     | 99.35                    |
+
 #### SQL Queries in Objective 4
 #### 1. Total Revenue earned by the restaurant.
 To calculate the total revenue earned by the restaurant, I first joined the order_details and menu_items tables on the item IDs and then I summed up the prices of all the items ordered.
@@ -305,6 +375,9 @@ LEFT JOIN
       menu_items M ON O.item_id = M.menu_item_id
 ;
 ```
+| total_revenue |
+|---------------|
+| 159217.90     |
 
 #### 2. Revenue earned per month.
 To find the revenue earned per month, I first extracted the month of each order from the order_date column using the EXTRACT() function and then summing the price of all items ordered and grouped and ordered the results by the month.
@@ -320,7 +393,11 @@ GROUP BY 1
 ORDER BY 1 ASC
 ;
 ```
-
+| month | revenue_per_month |
+|-------|-------------------|
+| 1     | 53816.95          |
+| 2     | 50790.35          |
+| 3     | 54610.60          |
 #### 3. Revenue earned per category.
 To calculate the revenue earned per category, I joined the order_details and menu_items tables on item IDs, and then I summed the prices of all the items ordered, and grouped them by the categories. 
 ```sql
@@ -335,7 +412,13 @@ GROUP BY 1
 ORDER BY 2 DESC
 ;
 ```
-
+| category  | revenue_per_category |
+|-----------|----------------------|
+| Italian   | 49462.70             |
+| Asian     | 46720.65             |
+| Mexican   | 34796.80             |
+| American  | 28237.75             |
+| NULL      | NULL                 |
 #### 4. Revenue earned per menu item.
 To calculate the revenue earned per menu item, I joined the order_details and menu_items tables on item IDs, and then I summed the prices of all the items ordered, and grouped them by the menu items. 
 
@@ -352,6 +435,41 @@ GROUP BY 1
 ORDER BY 3 DESC
 ;
 ```
+| item_name             | no_of_orders | revenue_per_item |
+|-----------------------|--------------|------------------|
+| Korean Beef Bowl      | 588          | 10554.60         |
+| Spaghetti & Meatballs | 470          | 8436.50          |
+| Tofu Pad Thai         | 562          | 8149.00          |
+| Cheeseburger          | 583          | 8132.85          |
+| Hamburger             | 622          | 8054.90          |
+| Orange Chicken        | 456          | 7524.00          |
+| Eggplant Parmesan     | 420          | 7119.00          |
+| Steak Torta           | 489          | 6821.55          |
+| Chicken Parmesan      | 364          | 6533.80          |
+| Pork Ramen            | 360          | 6462.00          |
+| Chicken Burrito       | 455          | 5892.25          |
+| Mushroom Ravioli      | 359          | 5564.50          |
+| Spaghetti             | 367          | 5321.50          |
+| Steak Burrito         | 354          | 5292.30          |
+| Meat Lasagna          | 273          | 4900.35          |
+| Salmon Roll           | 324          | 4843.80          |
+| Shrimp Scampi         | 239          | 4768.05          |
+| Chicken Torta         | 379          | 4529.05          |
+| California Roll       | 355          | 4242.25          |
+| French Fries          | 571          | 3997.00          |
+| Fettuccine Alfredo    | 249          | 3610.50          |
+| Mac & Cheese          | 463          | 3241.00          |
+| Chips & Salsa         | 461          | 3227.00          |
+| Cheese Lasagna        | 207          | 3208.50          |
+| Edamame               | 620          | 3100.00          |
+| Steak Tacos           | 214          | 2985.30          |
+| Veggie Burger         | 238          | 2499.00          |
+| Cheese Quesadillas    | 233          | 2446.50          |
+| Hot Dog               | 257          | 2313.00          |
+| Chips & Guacamole     | 237          | 2133.00          |
+| Potstickers           | 205          | 1845.00          |
+| Chicken Tacos         | 123          | 1469.85          |
+| NULL                  | 137          | NULL             |
 
 #### Insights
 1. The restaurant has 32 items in 4 categories, with Italian and Mexican categories having 9 items each, Asian 8 items and American 6 items.
