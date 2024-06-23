@@ -2,14 +2,14 @@
 ## Introduction
 Welcome to an analysis of a fictional restaurant order data analysis.
 
-Curious about the SQL queries used? Check them [here](dataset).
+Curious about the SQL queries used? Check them [here](sql-queries).
 
 ## Background
 ### Dataset
-The dataset used for this analysis comes from Maven Analytics. You can access the restaurant dataset here.
+The dataset used for this analysis comes from Maven Analytics. You can access the restaurant dataset [here](dataset).
 The dataset contains two tables: The menu_items table, containing the list of menu items. It has 4 columns - menu_item_id, item_name, category and price and 32 rows. The second table, the order_details table, contains 5 columns - order_details_id, order_id, order_date, order_time and item_id and 12234 rows.
 
-Additionally, CSV files generated from SQL queries can be found here.
+Additionally, CSV files generated from SQL queries can be found [here](sql-query-results).
 
 ### Project Overview
 This project is a simple, basic SQL analysis of two tables on restaurant orders. It aims to uncover insights on the performance of the restaurant, and decide which menu items to include going forward. This project provided me with the opportunity to showcase my SQL skills and also learn MySQL and GitHub.
