@@ -529,7 +529,7 @@ ORDER BY 3 DESC
 | Chicken Tacos         | 123          | 1469.85          |
 | NULL                  | 137          | NULL             |
 
-#### Insights
+## Insights
 1. The restaurant has 32 items in 4 categories, with Italian and Mexican categories having 9 items each, Asian 8 items and American 6 items.
 2. Over a period of 3 months, Jan-Mar 2023, the restaurant had 5370 orders or about 60 orders per day and earned a revenue of over $150,000.
 3. While the Hamburger is the single most ordered item, it is not the most revenue generating item. That honour goes to the Korean Beef Bowl, which generated over $10000 in revenue.
