@@ -1,6 +1,6 @@
 # Restaurant-Order-Analysis
 ## Introduction
-Welcome to an analysis of a fictional restaurant order data analysis.
+The Taste of the World Cafe is a fictional restaurant that has diverse menu offerings and serves generous portions. It debuted a new menu at the start of 2023. As their data analyst, I have been asked to dig into the customer data to see which menu items are doing well/not well and what the top customers seem to like best.
 
 Curious about the SQL queries used? Check them [here](sql-queries).
 
