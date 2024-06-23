@@ -1,0 +1,34 @@
+item_name,no_of_orders,revenue_per_item
+"Korean Beef Bowl",588,10554.60
+"Spaghetti & Meatballs",470,8436.50
+"Tofu Pad Thai",562,8149.00
+Cheeseburger,583,8132.85
+Hamburger,622,8054.90
+"Orange Chicken",456,7524.00
+"Eggplant Parmesan",420,7119.00
+"Steak Torta",489,6821.55
+"Chicken Parmesan",364,6533.80
+"Pork Ramen",360,6462.00
+"Chicken Burrito",455,5892.25
+"Mushroom Ravioli",359,5564.50
+Spaghetti,367,5321.50
+"Steak Burrito",354,5292.30
+"Meat Lasagna",273,4900.35
+"Salmon Roll",324,4843.80
+"Shrimp Scampi",239,4768.05
+"Chicken Torta",379,4529.05
+"California Roll",355,4242.25
+"French Fries",571,3997.00
+"Fettuccine Alfredo",249,3610.50
+"Mac & Cheese",463,3241.00
+"Chips & Salsa",461,3227.00
+"Cheese Lasagna",207,3208.50
+Edamame,620,3100.00
+"Steak Tacos",214,2985.30
+"Veggie Burger",238,2499.00
+"Cheese Quesadillas",233,2446.50
+"Hot Dog",257,2313.00
+"Chips & Guacamole",237,2133.00
+Potstickers,205,1845.00
+"Chicken Tacos",123,1469.85
+NULL,137,NULL
