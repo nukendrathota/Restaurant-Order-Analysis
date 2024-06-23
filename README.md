@@ -37,9 +37,10 @@ Key Questions:
 Objective 3: Analysis of Customer Behavior
 Key Questions:
 1. What were the least and most ordered items? What categories were they in?
-2. What were the top 5 orders that spent the most money?
-3. View the details of the highest spent order. Which specific items were purchased?
-4. View the details of the top 5 highest spent orders.
+2. What were the total number of orders for each category?
+3. What were the top 5 orders that spent the most money?
+4. View the details of the highest spent order. Which specific items were purchased?
+5. View the details of the top 5 highest spent orders.
 
 Objective 4: Revenue Analysis
 Key Questions:
@@ -211,8 +212,21 @@ FROM
       order_details
 GROUP BY 1
 ORDER BY 2 DESC
+LIMIT 10
 ;
 ```
+| order_id | COUNT(item_id) |
+|----------|----------------|
+| 2675     | 14             |
+| 443      | 14             |
+| 1957     | 14             |
+| 3473     | 14             |
+| 330      | 14             |
+| 440      | 14             |
+| 4305     | 14             |
+| 1274     | 13             |
+| 2126     | 13             |
+| 1734     | 13             |
 
 #### 5. Number of orders with more than 12 items.
 ```sql
@@ -284,7 +298,29 @@ ORDER BY 3 DESC
 | NULL      | NULL                  | 137          |
 | Mexican   | Chicken Tacos         | 123          |
 
-#### 2. Top 5 orders that spent the most money.
+#### 2. Total orders for each category.
+To determine the number of orders for each menu item category, I performed a join between the order_details and menu_items tables using item IDs. Using the COUNT(*) function, I aggregated the orders for each category and sorted the results in descending order based on the order count.
+```sql
+SELECT
+      category,
+      COUNT(*) AS no_of_orders
+FROM
+      order_details O
+LEFT JOIN
+      menu_items M ON O.item_id = M.menu_item_id
+GROUP BY 1
+ORDER BY 2 DESC
+;
+```
+| category  | no_of_orders |
+|-----------|--------------|
+| Asian     | 3470         |
+| Italian   | 2948         |
+| Mexican   | 2945         |
+| American  | 2734         |
+| NULL      | 137          |
+
+#### 3. Top 5 orders that spent the most money.
 To find the top 5 orders that spent the most money, I joined the order_details table with the menu_items table on the item IDs, calculated the sum of the prices for each order, grouped the results by order ID, and then ordered the results by the total order amount in descending order, limiting the output to the top 5 orders.
 ```sql
 SELECT
@@ -307,7 +343,7 @@ LIMIT 5
 | 330      | 189.70      |
 | 2675     | 185.10      |
 
-#### 3. Details of the highest spent order and the specific items purchased in that order.
+#### 4. Details of the highest spent order and the specific items purchased in that order.
 Using the output of the previous query, we know that order #440 is the highest spent order. The query joins order_details table with the menu_items table on the item IDs, it then counts the numbers of items in the order per each category, and also calculates the amount spent on each category. The results are sorted in descending order of the amount spent per category.
 ```sql
 SELECT
@@ -341,7 +377,7 @@ ORDER BY 4 DESC
 | American | Hot Dog               | 2                      | 16.00                    |
 | American | French Fries          | 2                      | 16.00                    |
 
-#### 4. Details of the top 5 highest spent orders. 
+#### 5. Details of the top 5 highest spent orders. 
 We know from the previous query, the order numbers of the top 5 highest spent orders. Filtering for these 5 orders, the query joins order_details table with the menu_items table on the item IDs, it then counts the numbers of items in the order per each category, and also calculates the amount spent on each category. The results are sorted in descending order of the amount spent per category.
 ```sql
 SELECT category,
