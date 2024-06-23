@@ -331,4 +331,4 @@ ORDER BY 3 DESC
 4. Although Italian is the most expensive category, with an average dish price of about $16.75, it is still the most ordered category in orders that spent the most money. This indicates that the restaurant is gaining recognition for its Italian dishes in the dine-in segment, while its hamburgers are becoming increasingly popular for takeout orders.
 
 ## Closing Thoughts
-This project advanced my knowledge of how MySQL works. It also showed my how results from multiple SQL queries can be clubbed together to derive unique insights. Also, this project is my first SQL project on GitHub. I've learnt how to upload project onto GitHub, and hopefully I will be able to put more SQL projects here and build a SQL portfolio. 
+This project advanced my knowledge of how MySQL works. It also showed me how results from multiple SQL queries can be clubbed together to derive unique insights. Also, this project is my first SQL project on GitHub. I've learnt how to upload project onto GitHub, and hopefully I will be able to put more SQL projects here and build a SQL portfolio. 
