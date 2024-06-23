@@ -60,7 +60,10 @@ FROM
       menu_items
 ;
 ```
-
+Here's the output:
+| No_of_items |
+|-------------|
+| 32          |
 #### 2. Least and Most Expensive items on the menu.
 To identify the least and most expensive items on the menu, I ranked the items on the menu according to their price in descending order using the ROW_NUMBER window function and then filtering for row numbers 1 and 32. 
 ```sql
@@ -80,7 +83,10 @@ WHERE
       rnk IN (1, 32)
 ;
 ```
-
+| item_name    | price |
+|--------------|-------|
+| Shrimp Scampi| 19.95 |
+| Edamame      | 5.00  |
 #### 3. Number of Italian dishes on the menu.
 To count the number of Italian dishes on the menu, I filtered the menu_items table for the Italian category, and then counted the number of rows.
 ```sql
@@ -92,7 +98,9 @@ WHERE
       category = 'Italian'
 ;
 ```
-
+| no_of_italian_dishes |
+|----------------------|
+| 9                    |
 #### 4. Least and Most Expensive Italian dishes on the menu.
 To retrieve the least and most expensive Italian dishes on the menu, I used a subquery to assign a rank to each Italian dish based on its price in descending order. I then filtered the table for ranks 1 and 9 as there are 9 Italian items on the menu.
 ```sql
@@ -114,7 +122,10 @@ WHERE
     rnk IN (1, 9)
 ;
 ```
-
+| item_name           | price |
+|---------------------|-------|
+| Shrimp Scampi       | 19.95 |
+| Fettuccine Alfredo  | 14.50 |
 #### 5. No of dishes in each category.
 To count the number of dishes in each category, I grouped the menu_items table by the category column and then counted the number of items in each group. 
 ```sql
@@ -126,7 +137,12 @@ FROM
 GROUP BY 1
 ;
 ```
-
+| category | no_of_dishes |
+|----------|--------------|
+| American | 6            |
+| Asian    | 8            |
+| Mexican  | 9            |
+| Italian  | 9            |
 #### 6. Average dish price within each category.
 To calculate the average price of dishes in each category, rounded to two decimal places, I grouped the menu_items table by the category column and then calculated the average price for each group.
 ```sql
@@ -139,6 +155,13 @@ GROUP BY 1
 ORDER BY 2 DESC
 ;
 ```
+| category | avg_price |
+|----------|-----------|
+| Italian  | 16.75     |
+| Asian    | 13.48     |
+| Mexican  | 11.80     |
+| American | 10.07     |
+
 #### SQL Queries in Objective 2
 #### 1. Date Range of the order_details table.
 To find the date range of the order_details table, I selected the minimum and maximum values of the order_date column.
@@ -150,6 +173,9 @@ FROM
       order_details
 ;
 ```
+| min_date   | max_date   |
+|------------|------------|
+| 2023-01-01 | 2023-03-31 |
 #### 2. Total Number of orders and Average Number of orders per day made within this date range.
 To count the number of unique orders in the order_details table, I selected the distinct count of the order_id column.
 ```sql
@@ -160,6 +186,9 @@ FROM
       order_details
 ;
 ```
+| no_of_orders | avg_no_of_orders |
+|--------------|------------------|
+| 5370         | 60               |
 #### 3. Number of items ordered within this date range.
 To count the total number of items ordered, I selected the count of the item_id column.
 ```sql
